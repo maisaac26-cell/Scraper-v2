@@ -6,9 +6,9 @@
 <title>RhinosApp — Prospect Scraper</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
-
+ 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
   :root {
     --bg: #f7f6f3;
     --surface: #ffffff;
@@ -24,16 +24,16 @@
     --sans: 'IBM Plex Sans', sans-serif;
     --r: 8px;
   }
-
+ 
   body { font-family: var(--sans); background: var(--bg); color: var(--text); min-height: 100vh; padding: 2rem 1rem; }
   .wrap { max-width: 900px; margin: 0 auto; }
-
+ 
   /* HEADER */
   .header { display: flex; align-items: center; gap: 14px; margin-bottom: 2rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); }
   .logo { width: 40px; height: 40px; background: var(--orange); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 12px; font-weight: 500; color: #fff; flex-shrink: 0; }
   .header h1 { font-size: 17px; font-weight: 500; letter-spacing: -0.3px; }
   .header p  { font-size: 12px; color: var(--muted); font-family: var(--mono); margin-top: 2px; }
-
+ 
   /* TABS */
   .tabs { display: flex; gap: 0; margin-bottom: 1.5rem; border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
   .tab {
@@ -47,14 +47,14 @@
   .tab.active-muzz { background: var(--orange); color: #fff; }
   .tab.active-pasta { background: var(--blue); color: #fff; }
   .tab:hover:not(.active-muzz):not(.active-pasta) { background: var(--bg); }
-
+ 
   .panel { display: none; }
   .panel.active { display: block; }
-
+ 
   /* CARD */
   .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; margin-bottom: 1rem; }
   .card-title { font-size: 11px; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); margin-bottom: 1rem; }
-
+ 
   /* FIELDS */
   .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .field { display: flex; flex-direction: column; gap: 5px; }
@@ -63,18 +63,18 @@
   input, select { font-family: var(--mono); font-size: 13px; padding: 8px 10px; border: 1px solid var(--border); border-radius: var(--r); background: var(--bg); color: var(--text); width: 100%; transition: border-color 0.15s; }
   input:focus, select:focus { outline: none; }
   #apiKey:focus { border-color: var(--orange); }
-
+ 
   /* TAGS */
   .tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .tag { font-family: var(--mono); font-size: 11px; padding: 4px 11px; border-radius: 20px; border: 1px solid var(--border); cursor: pointer; background: var(--surface); color: var(--muted); transition: all 0.15s; user-select: none; }
   .tag:hover { border-color: var(--border2); color: var(--text); }
   .tag.on-orange { background: var(--orange); border-color: var(--orange); color: #fff; }
   .tag.on-blue   { background: var(--blue);   border-color: var(--blue);   color: #fff; }
-
+ 
   /* TIP */
   .tip { font-size: 11px; font-family: var(--mono); color: var(--muted); padding: 8px 12px; background: var(--bg); border-left: 2px solid var(--orange); border-radius: 0 var(--r) var(--r) 0; margin-top: 12px; }
   .tip.blue { border-left-color: var(--blue); }
-
+ 
   /* BUTTONS */
   .btn-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 1rem; }
   .btn-run { border: none; border-radius: var(--r); padding: 10px 22px; font-family: var(--mono); font-size: 13px; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: opacity 0.15s; color: #fff; }
@@ -82,14 +82,14 @@
   .btn-run:disabled { opacity: 0.4; cursor: not-allowed; }
   .btn-run.orange { background: var(--orange); }
   .btn-run.blue   { background: var(--blue); }
-
+ 
   .btn-csv { background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: var(--r); padding: 10px 18px; font-family: var(--mono); font-size: 13px; cursor: pointer; display: none; align-items: center; gap: 6px; }
   .btn-csv:hover { background: var(--bg); }
   .btn-csv.show { display: flex; }
-
+ 
   .spinner { width: 13px; height: 13px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; display: none; }
   @keyframes spin { to { transform: rotate(360deg); } }
-
+ 
   /* LOG */
   .log { background: #1a1917; border-radius: var(--r); padding: 12px 14px; font-family: var(--mono); font-size: 12px; min-height: 64px; max-height: 160px; overflow-y: auto; display: none; margin-bottom: 1rem; }
   .ll { margin-bottom: 3px; color: #888; }
@@ -97,7 +97,7 @@
   .ll.err  { color: #f87171; }
   .ll.inf  { color: #60a5fa; }
   .ll.head { color: #fbbf24; }
-
+ 
   /* RESULTS */
   .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 1rem; }
   .stat { background: var(--bg); border-radius: var(--r); padding: 10px 12px; text-align: center; }
@@ -105,7 +105,7 @@
   .stat-val.orange { color: var(--orange); }
   .stat-val.blue   { color: var(--blue); }
   .stat-lbl { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--mono); margin-top: 2px; }
-
+ 
   .table-wrap { border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; overflow-x: auto; }
   table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 720px; }
   thead { background: var(--bg); }
@@ -113,18 +113,30 @@
   td { padding: 7px 10px; border-bottom: 1px solid var(--border); color: var(--text); max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: middle; }
   tr:last-child td { border-bottom: none; }
   tr:hover td { background: #faf9f6; }
-
+ 
   .badge { font-family: var(--mono); font-size: 9px; font-weight: 500; padding: 2px 7px; border-radius: 10px; display: inline-block; }
   .badge-alto  { background: #d1fae5; color: #065f46; }
   .badge-medio { background: #fef3c7; color: #92400e; }
   .badge-prov  { background: #dbeafe; color: #1e40af; }
-
+ 
   .lnk { color: var(--blue); text-decoration: none; }
   .lnk:hover { text-decoration: underline; }
-
+ 
   .res-section { display: none; }
   .res-section.show { display: block; }
-
+ 
+  /* CIUDAD CUSTOM */
+  .city-input-row { display: flex; gap: 8px; margin-top: 8px; }
+  .city-input-row input { flex: 1; }
+  .city-input-row button { font-family: var(--mono); font-size: 12px; padding: 8px 14px; border-radius: var(--r); border: 1px solid var(--border); background: var(--surface); color: var(--text); cursor: pointer; white-space: nowrap; }
+  .city-input-row button:hover { background: var(--bg); }
+  .custom-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .custom-pill { font-family: var(--mono); font-size: 11px; padding: 4px 8px 4px 11px; border-radius: 20px; display: flex; align-items: center; gap: 6px; }
+  .custom-pill.orange { background: var(--orange); color: #fff; border: 1px solid var(--orange); }
+  .custom-pill.blue   { background: var(--blue);   color: #fff; border: 1px solid var(--blue); }
+  .custom-pill button { background: none; border: none; color: inherit; cursor: pointer; font-size: 13px; padding: 0; line-height: 1; opacity: 0.8; }
+  .custom-pill button:hover { opacity: 1; }
+ 
   @media (max-width: 600px) {
     .grid2 { grid-template-columns: 1fr; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -133,7 +145,7 @@
 </head>
 <body>
 <div class="wrap">
-
+ 
   <!-- HEADER -->
   <div class="header">
     <div class="logo">RH</div>
@@ -142,7 +154,7 @@
       <p>SerpAPI · Google Maps · Todo Argentina</p>
     </div>
   </div>
-
+ 
   <!-- API KEY (global) -->
   <div class="card">
     <div class="card-title">Configuración general</div>
@@ -165,7 +177,7 @@
       💡 SerpAPI: 100 búsquedas gratis/mes. Cada ciudad×categoría = 1 búsqueda. Usá los tabs para alternar entre los dos modos de prospección.
     </div>
   </div>
-
+ 
   <!-- TABS -->
   <div class="tabs">
     <button class="tab active-muzz" id="tab-muzz" onclick="switchTab('muzz')">
@@ -175,16 +187,16 @@
       🍝 Pastas secas — Distribuidoras de alimentos
     </button>
   </div>
-
+ 
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- PANEL MUZZARELLA                                        -->
   <!-- ═══════════════════════════════════════════════════════ -->
   <div class="panel active" id="panel-muzz">
-
+ 
     <div class="card">
       <div class="card-title">Compradores de muzzarella — Gastronomía de alto volumen</div>
       <div class="grid2">
-
+ 
         <div class="field full">
           <label>Categorías a buscar</label>
           <div class="tags" id="muzz-cats">
@@ -198,7 +210,7 @@
             <span class="tag" data-q="catering">Catering</span>
           </div>
         </div>
-
+ 
         <div class="field full">
           <label>Ciudades</label>
           <div class="tags" id="muzz-cities">
@@ -223,11 +235,16 @@
             <span class="tag" data-city="Paraná, Argentina">Paraná</span>
             <span class="tag" data-city="Comodoro Rivadavia, Argentina">Comodoro Rivadavia</span>
           </div>
+          <div class="city-input-row">
+            <input type="text" id="muzz-city-input" placeholder="Otra ciudad... ej: Tandil, Bahía Blanca, Rafaela" onkeydown="if(event.key==='Enter') addCustomCity('muzz')" />
+            <button onclick="addCustomCity('muzz')">+ Agregar</button>
+          </div>
+          <div class="custom-pills" id="muzz-custom-pills"></div>
         </div>
-
+ 
       </div>
     </div>
-
+ 
     <div class="btn-row">
       <button class="btn-run orange" id="muzz-btn" onclick="startSearch('muzz')">
         <span class="spinner" id="muzz-spin"></span>
@@ -236,9 +253,9 @@
       <button class="btn-csv" id="muzz-csv" onclick="exportCSV('muzz')">⬇ Exportar CSV</button>
       <span id="muzz-counter" style="font-family:var(--mono);font-size:12px;color:var(--muted);display:none"></span>
     </div>
-
+ 
     <div class="log" id="muzz-log"></div>
-
+ 
     <div class="res-section" id="muzz-results">
       <div class="card">
         <div class="card-title">Prospectos — Muzzarella</div>
@@ -255,18 +272,18 @@
         </div>
       </div>
     </div>
-
+ 
   </div>
-
+ 
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- PANEL PASTAS SECAS                                      -->
   <!-- ═══════════════════════════════════════════════════════ -->
   <div class="panel" id="panel-pasta">
-
+ 
     <div class="card">
       <div class="card-title">Distribuidoras de alimentos — Canales de pastas secas</div>
       <div class="grid2">
-
+ 
         <div class="field full">
           <label>Tipo de distribuidora / canal</label>
           <div class="tags" id="pasta-cats">
@@ -280,7 +297,7 @@
             <span class="tag" data-q="proveedor de restaurantes">Proveedores de restaurantes</span>
           </div>
         </div>
-
+ 
         <div class="field full">
           <label>Provincia / Zona</label>
           <div class="tags" id="pasta-cities">
@@ -305,14 +322,19 @@
             <span class="tag" data-city="Paraná, Argentina">Paraná</span>
             <span class="tag" data-city="Comodoro Rivadavia, Argentina">Comodoro Rivadavia</span>
           </div>
+          <div class="city-input-row">
+            <input type="text" id="pasta-city-input" placeholder="Otra ciudad... ej: Tandil, Bahía Blanca, Rafaela" onkeydown="if(event.key==='Enter') addCustomCity('pasta')" />
+            <button onclick="addCustomCity('pasta')">+ Agregar</button>
+          </div>
+          <div class="custom-pills" id="pasta-custom-pills"></div>
         </div>
-
+ 
       </div>
       <div class="tip blue">
         💡 Las distribuidoras suelen tener menos reseñas que la gastronomía. Si encontrás pocos resultados, bajá el filtro de reseñas a 50+ en la config general.
       </div>
     </div>
-
+ 
     <div class="btn-row">
       <button class="btn-run blue" id="pasta-btn" onclick="startSearch('pasta')">
         <span class="spinner" id="pasta-spin"></span>
@@ -321,9 +343,9 @@
       <button class="btn-csv" id="pasta-csv" onclick="exportCSV('pasta')">⬇ Exportar CSV</button>
       <span id="pasta-counter" style="font-family:var(--mono);font-size:12px;color:var(--muted);display:none"></span>
     </div>
-
+ 
     <div class="log" id="pasta-log"></div>
-
+ 
     <div class="res-section" id="pasta-results">
       <div class="card">
         <div class="card-title">Prospectos — Pastas Secas</div>
@@ -340,24 +362,25 @@
         </div>
       </div>
     </div>
-
+ 
   </div><!-- /panel-pasta -->
-
+ 
 </div><!-- /wrap -->
-
+ 
 <script>
   // ── Estado ──────────────────────────────────────────────────
   const state = { muzz: [], pasta: [] };
-
+  const customCities = { muzz: [], pasta: [] };
+ 
   // ── Tabs ────────────────────────────────────────────────────
   function switchTab(tab) {
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
     document.getElementById('panel-' + tab).classList.add('active');
-
+ 
     document.getElementById('tab-muzz').className  = 'tab' + (tab === 'muzz'  ? ' active-muzz'  : '');
     document.getElementById('tab-pasta').className = 'tab' + (tab === 'pasta' ? ' active-pasta' : '');
   }
-
+ 
   // ── Tag toggles ─────────────────────────────────────────────
   function setupTags(containerId, activeClass) {
     document.querySelectorAll(`#${containerId} .tag`).forEach(t => {
@@ -368,7 +391,41 @@
   setupTags('muzz-cities',  'on-orange');
   setupTags('pasta-cats',   'on-blue');
   setupTags('pasta-cities', 'on-blue');
-
+ 
+  // ── Ciudades custom ─────────────────────────────────────────
+  function addCustomCity(mode) {
+    const input = document.getElementById(mode + '-city-input');
+    const val   = input.value.trim();
+    if (!val) return;
+    const cityFull = val.includes('Argentina') ? val : `${val}, Argentina`;
+    if (customCities[mode].includes(cityFull)) { input.value = ''; return; }
+    customCities[mode].push(cityFull);
+    renderCustomPills(mode);
+    input.value = '';
+  }
+ 
+  function removeCustomCity(mode, city) {
+    customCities[mode] = customCities[mode].filter(c => c !== city);
+    renderCustomPills(mode);
+  }
+ 
+  function renderCustomPills(mode) {
+    const color = mode === 'muzz' ? 'orange' : 'blue';
+    const container = document.getElementById(mode + '-custom-pills');
+    container.innerHTML = customCities[mode].map(city =>
+      `<span class="custom-pill ${color}">
+        ${city.replace(', Argentina', '')}
+        <button onclick="removeCustomCity('${mode}', '${city.replace(/'/g, "\\'")}')">×</button>
+      </span>`
+    ).join('');
+  }
+ 
+  function getAllCities(mode) {
+    const selector = mode === 'muzz' ? '#muzz-cities .tag.on-orange' : '#pasta-cities .tag.on-blue';
+    const tagCities = [...document.querySelectorAll(selector)].map(t => t.dataset.city);
+    return [...tagCities, ...customCities[mode]];
+  }
+ 
   // ── Log ─────────────────────────────────────────────────────
   function log(mode, msg, type = '') {
     const el = document.getElementById(mode + '-log');
@@ -380,23 +437,23 @@
     el.appendChild(line);
     el.scrollTop = el.scrollHeight;
   }
-
+ 
   function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
-
+ 
   // ── Búsqueda ────────────────────────────────────────────────
   async function startSearch(mode) {
     const apiKey = document.getElementById('apiKey').value.trim();
     if (!apiKey) { alert('Ingresá tu SerpAPI Key en la config general'); return; }
-
+ 
     const catSelector  = mode === 'muzz' ? '#muzz-cats .tag.on-orange'  : '#pasta-cats .tag.on-blue';
     const citySelector = mode === 'muzz' ? '#muzz-cities .tag.on-orange': '#pasta-cities .tag.on-blue';
-
+ 
     const cats   = [...document.querySelectorAll(catSelector)].map(t => t.dataset.q);
-    const cities = [...document.querySelectorAll(citySelector)].map(t => t.dataset.city);
+    const cities = getAllCities(mode);
     const minRev = parseInt(document.getElementById('minReviews').value);
-
+ 
     if (!cats.length || !cities.length) { alert('Seleccioná al menos una categoría y una ciudad/provincia'); return; }
-
+ 
     // Reset UI
     const btn = document.getElementById(mode + '-btn');
     btn.disabled = true;
@@ -408,31 +465,31 @@
     document.getElementById(mode + '-csv').classList.remove('show');
     document.getElementById(mode + '-counter').style.display = 'none';
     state[mode] = [];
-
+ 
     const total = cats.length * cities.length;
     log(mode, `Iniciando: ${cities.length} zonas × ${cats.length} categorías = ${total} búsquedas`, 'inf');
-
+ 
     let done = 0;
     const seen = new Set();
-
+ 
     for (const city of cities) {
       for (const cat of cats) {
         done++;
         log(mode, `[${done}/${total}] "${cat}" en ${city}`, 'head');
-
+ 
         try {
           const res = await fetch('/api/search', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ apiKey, query: `${cat} en ${city}`, city, cat, minReviews: minRev, maxResults: 20 })
           });
-
+ 
           const data = await res.json();
           if (!res.ok) { log(mode, `  ✗ ${data.error ?? res.statusText}`, 'err'); continue; }
-
+ 
           const items = data.results ?? [];
           log(mode, `  ✓ ${items.length} resultados`, 'ok');
-
+ 
           for (const item of items) {
             const uid = (item.title ?? '').toLowerCase().trim() + '_' + city;
             if (seen.has(uid)) continue;
@@ -448,14 +505,14 @@
         } catch(e) {
           log(mode, `  ✗ ${e.message}`, 'err');
         }
-
+ 
         await sleep(500);
       }
     }
-
+ 
     finalize(mode);
   }
-
+ 
   // ── Agregar fila ────────────────────────────────────────────
   function appendRow(mode, r) {
     document.getElementById(mode + '-results').classList.add('show');
@@ -466,7 +523,7 @@
       : rev >= 50
       ? `<span class="badge badge-medio">${rev.toLocaleString('es-AR')}</span>`
       : `<span class="badge badge-prov">${rev.toLocaleString('es-AR')}</span>`;
-
+ 
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td title="${r.title ?? ''}">${r.title ?? '—'}</td>
@@ -480,7 +537,7 @@
     `;
     tbody.appendChild(tr);
   }
-
+ 
   // ── Finalizar ────────────────────────────────────────────────
   function finalize(mode) {
     const rows  = state[mode];
@@ -489,14 +546,14 @@
     const tel   = rows.filter(r => r.phone).length;
     const web   = rows.filter(r => r.website).length;
     const color = mode === 'muzz' ? 'orange' : 'blue';
-
+ 
     document.getElementById(mode + '-stats').innerHTML = `
       <div class="stat"><div class="stat-val ${color}">${n}</div><div class="stat-lbl">Total</div></div>
       <div class="stat"><div class="stat-val ${color}">${alto}</div><div class="stat-lbl">Volumen alto</div></div>
       <div class="stat"><div class="stat-val ${color}">${tel}</div><div class="stat-lbl">Con teléfono</div></div>
       <div class="stat"><div class="stat-val ${color}">${web}</div><div class="stat-lbl">Con web</div></div>
     `;
-
+ 
     document.getElementById(mode + '-csv').classList.add('show');
     const btn = document.getElementById(mode + '-btn');
     btn.disabled = false;
@@ -505,7 +562,7 @@
     document.getElementById(mode + '-btntxt').textContent = labels[mode];
     log(mode, `Búsqueda completa — ${n} prospectos únicos`, 'ok');
   }
-
+ 
   // ── Export CSV ───────────────────────────────────────────────
   function exportCSV(mode) {
     const headers = ['Nombre','Categoría','Ciudad','Dirección','Teléfono','Web','Reseñas','Rating'];
